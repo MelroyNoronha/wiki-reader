@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/MelroyNoronha/wiki-reader/issues"
   },
-  "homepage": "https://github.com/MelroyNoronha/wiki-reader#readme"
+  "homepage": "https://github.com/MelroyNoronha/wiki-reader#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {}
 }
