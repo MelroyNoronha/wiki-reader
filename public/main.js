@@ -13,25 +13,26 @@ searchBox.addEventListener('keypress', (e) => {
 searchBtn.addEventListener('click', () => {
     search(searchBox.value);
 });
-
+randomArticleBtn.addEventListener('click', () => {
+    renderRandomArticle();
+})
 
 function search(string) {
-    let searchTerms = sanitize(string);
-    let wikiSearchUrl = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${searchTerms}&utf8=`;
+    let searchTerms = string;
+    console.log(searchTerms);
+    let wikiSearchUrl = `https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=${searchTerms}&utf8=`;
+    fetchJsonp(wikiSearchUrl)
+        .then(response => response.json())
+        .then(data => console.log(data))
 }
 
-//sanitizes the string as per wikipedia's API specs i.e exampleString to Example_string
+//replaces whitespaces with underscores in the string i.e 'Example String' to 'Example_String'
 function sanitize(string) {
     let sanitizedString = '';
-    string = string.split('');
-    for (let i = 0; i < string.length; i++) {
-        console.log(sanitizedString);
-        if (i == 0) {
-            sanitizedString += string[i].toUpperCase();
-        } else {
-            sanitizedString += string[i].toLowerCase();
-        }
-    }
-    sanitizedString = sanitizedString.replace(" ", "_")
+    sanitizedString = string.replace(" ", "_")
     return sanitizedString;
+}
+
+function renderRandomArticle() {
+    let wikiRandomUrl = `https://en.wikipedia.org/wiki/Special:Random`;
 }
