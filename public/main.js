@@ -5,8 +5,8 @@ const suggestionDiv = document.getElementById("suggestionDiv");
 const contentDiv = document.getElementById("contentDiv");
 let searchDataRaw;
 let searchResults;
-let suggestions;
-let clickedResult;
+let suggestion;
+let clickedResultNumber;
 
 searchBox.addEventListener('input', () => {
     search(searchBox.value);
@@ -49,7 +49,7 @@ function renderSearchResults(jsonData) {
     if (searchResults.length <= 0) {
         suggestionDiv.innerHTML = `No results found for ${searchBox.value}.`;
         if (suggestion !== undefined) {
-            suggestionDiv.innerHTML += `Did you mean ${suggestion}?`
+            suggestionDiv.innerHTML += ` Did you mean ${suggestion}?`
         }
     }
 
@@ -64,20 +64,19 @@ function renderSearchResults(jsonData) {
 
 function openPageForSelectedResult(clickedElementNumber) {
     let clickedResultTitle = searchResults[clickedElementNumber].title;
-    let sanitizedTitle = sanitize(clickedResultTitle);
-    let wikiRenderByTitleUrl = `https://en.wikipedia.org/w/index.php?action=render&title=${sanitizedTitle}`
+    let normalizedTitle = normalizeTitle(clickedResultTitle);
+    let wikiUrl = `https://en.wikipedia.org/wiki/${normalizedTitle}`
     searchResultsDiv.innerHTML = ``;
-    contentDiv.innerHTML = `<iframe src=${wikiRenderByTitleUrl}></iframe>`
+    contentDiv.innerHTML = `<iframe src=${wikiUrl}  scrolling="auto"></iframe>`
 }
 //replaces whitespaces with underscores in the string i.e 'Example String' to 'Example_String'
-function sanitize(string) {
-    let sanitizedString = '';
-    sanitizedString = string.replace(" ", "_")
-    return sanitizedString;
+function normalizeTitle(string) {
+    let normalizedString = string.replace(" ", "_")
+    return normalizedString;
 }
 
 function openRandomArticle() {
     let wikiRandomArticleUrl = `https://en.wikipedia.org/wiki/Special:Random`;
     searchResultsDiv.innerHTML = ``;
-    contentDiv.innerHTML = `<iframe src=${wikiRandomArticleUrl}></iframe>`;
+    contentDiv.innerHTML = `<iframe src=${wikiRandomArticleUrl} scrolling="auto"></iframe>`;
 }
