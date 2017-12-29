@@ -1,6 +1,7 @@
 const searchBox = document.getElementById("searchBox");
 const searchResultsDiv = document.getElementById("searchResultsDiv");
 const suggestionDiv = document.getElementById("suggestionDiv");
+const contentDiv = document.getElementById("contentDiv");
 let searchDataRaw;
 let searchResults;
 let suggestions;
@@ -61,8 +62,9 @@ function openPage(clickedElementNumber) {
     let clickedResultTitle = searchResults[clickedElementNumber].title;
     let sanitizedTitle = sanitize(clickedResultTitle);
     let wikiRenderByTitleUrl = `https://en.wikipedia.org/w/index.php?action=render&title=${sanitizedTitle}`
+    searchResultsDiv.innerHTML = ``;
+    contentDiv.innerHTML = `<iframe src=${wikiRenderByTitleUrl}></iframe>`
 }
-
 //replaces whitespaces with underscores in the string i.e 'Example String' to 'Example_String'
 function sanitize(string) {
     let sanitizedString = '';
