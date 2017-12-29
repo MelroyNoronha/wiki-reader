@@ -1,4 +1,5 @@
 const searchBox = document.getElementById("searchBox");
+const randomArticleBtn = document.getElementById("randomArticleBtn");
 const searchResultsDiv = document.getElementById("searchResultsDiv");
 const suggestionDiv = document.getElementById("suggestionDiv");
 const contentDiv = document.getElementById("contentDiv");
@@ -17,10 +18,13 @@ searchBox.addEventListener('keypress', (e) => {
     }
 });
 
+randomArticleBtn.addEventListener('click', () => {
+    openRandomArticle();
+})
 
 searchResultsDiv.addEventListener('click', (e) => {
     clickedResultNumber = Number(e.target.id);
-    openPage(clickedResultNumber);
+    openPageForSelectedResult(clickedResultNumber);
 });
 
 function search(string) {
@@ -58,7 +62,7 @@ function renderSearchResults(jsonData) {
     }
 }
 
-function openPage(clickedElementNumber) {
+function openPageForSelectedResult(clickedElementNumber) {
     let clickedResultTitle = searchResults[clickedElementNumber].title;
     let sanitizedTitle = sanitize(clickedResultTitle);
     let wikiRenderByTitleUrl = `https://en.wikipedia.org/w/index.php?action=render&title=${sanitizedTitle}`
@@ -70,4 +74,10 @@ function sanitize(string) {
     let sanitizedString = '';
     sanitizedString = string.replace(" ", "_")
     return sanitizedString;
+}
+
+function openRandomArticle() {
+    let wikiRandomArticleUrl = `https://en.wikipedia.org/wiki/Special:Random`;
+    searchResultsDiv.innerHTML = ``;
+    contentDiv.innerHTML = `<iframe src=${wikiRandomArticleUrl}></iframe>`;
 }
