@@ -16,31 +16,43 @@ iframe{
 #searchBox{
     all: unset;
     border: solid .5px black;
-    border-radius: 10px 10px 10px 10px;
-    font-size: 3vw;
+    border-radius: 50px 50px 50px 50px;
+    font-size: 2.5vw;
     position: relative;
     top: 5vh;
     left: 10vw;
-    padding: 10px;
+    padding: 2vw;
+}
+#searchBox:hover{
+    box-shadow: 10px 5px 50px 0px black;
+}
+#searchBox:active{
+    box-shadow: 10px 5px 50px 0px black;
 }
 
 #randomArticleBtn{
     all: unset;
     border: solid .5px black;
-    border-radius: 10px 10px 10px 10px;
-    font-size: 3vw;
+    border-radius: 50px 50px 50px 50px;
+    font-size: 2.5vw;
     position: relative;
     top: 5vh;
     left: 15vw;
-    padding: 10px;
+    padding: 2vw;
     cursor: pointer;
+    transition-duration: .3s;
+}
+#randomArticleBtn:hover{
+    background-color: black;
+    color: white;
+    box-shadow: 10px 5px 50px 0px black;
 }
 
 #suggestionDiv{
     position: relative;
     top: 15vh;
     margin-left: 10vw;
-    font-size: 3vw
+    font-size: 3vw;
 }
 
 #searchResultsDiv{
@@ -50,4 +62,49 @@ iframe{
     margin-left: 5vw;
     font-size: 2vw;
     cursor: pointer;
+}
+
+.listItem{
+    font-size: 2vw;
+    transition-duration: .2s;
+    padding: 2vw;
+}
+.listItem:hover{
+    border-left: .5vw solid black;
+    box-shadow: 10px 5px 50px 0px black; 
+}
+.listItem:active{
+    border-left: .5vw solid black;
+    box-shadow: 10px 5px 50px 0px black; 
+}
+
+@media screen and (max-width: 600px){
+    #searchBox{
+        font-size: 4vw;
+        left: 5vw;
+    }
+
+    #randomArticleBtn{
+        font-size: 4vw;
+        left: 8vw;
+    }
+
+    #suggestionDiv{
+        margin-left: 5vw;
+        font-size: 3.5vw;
+    }
+    
+    .listItem{
+        font-size: 2vw;
+        transition-duration: .2s;
+        padding: 2vw;
+    }
+    .listItem:hover{
+        border-left: .5vw solid black;
+        box-shadow: 10px 5px 50px 0px black; 
+    }
+    .listItem:active{
+        border-left: .5vw solid black;
+        box-shadow: 10px 5px 50px 0px black; 
+    }
 }
