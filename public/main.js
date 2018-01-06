@@ -19,7 +19,6 @@ searchBox.addEventListener('keypress', (e) => {
 });
 
 randomArticleBtn.addEventListener('click', () => {
-    changeColorOnClick();
     openRandomArticle();
 })
 
@@ -80,8 +79,4 @@ function openRandomArticle() {
     let wikiRandomArticleUrl = `https://en.wikipedia.org/wiki/Special:Random`;
     searchResultsDiv.innerHTML = ``;
     contentDiv.innerHTML = `<iframe src=${wikiRandomArticleUrl} scrolling="auto"></iframe>`;
-}
-
-function changeColorOnClick() {
-    randomArticleBtn.classList = "btnPressed";
 }

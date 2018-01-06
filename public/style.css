@@ -4,6 +4,7 @@ body{
 }
 
 iframe{
+    all: unset;
     margin-top: 10vh;
     padding: 0px;
     border: none;
@@ -11,28 +12,31 @@ iframe{
     height: 100vh;
     position: relative;
     top: 10vh;
+    overflow: hidden;
 }
 
 #searchBox{
     all: unset;
-    border: solid .5px black;
+    border: solid 1px #4286f4;
     border-radius: 50px 50px 50px 50px;
     font-size: 2.5vw;
     position: relative;
     top: 5vh;
     left: 10vw;
-    padding: 2vw;
+    padding: 2vw 2.5vw;
+    transition-duration: .3s; 
 }
 #searchBox:hover{
-    box-shadow: 10px 5px 50px 0px black;
+    box-shadow: 0px 10px 50px 0px #2c2c2c;
 }
 #searchBox:active{
-    box-shadow: 10px 5px 50px 0px black;
+    box-shadow: 0px 10px 50px 0px #2c2c2c;
 }
 
 #randomArticleBtn{
     all: unset;
-    border: solid .5px black;
+    background-color: #4286f4;
+    color: #ffffff;
     border-radius: 50px 50px 50px 50px;
     font-size: 2.5vw;
     position: relative;
@@ -43,9 +47,7 @@ iframe{
     transition-duration: .3s;
 }
 #randomArticleBtn:hover{
-    background-color: black;
-    color: white;
-    box-shadow: 10px 5px 50px 0px black;
+    box-shadow: 0px 10px 50px 0px #2c2c2c;
 }
 
 #suggestionDiv{
@@ -56,6 +58,7 @@ iframe{
 }
 
 #searchResultsDiv{
+    all: unset;
     height: 100%;
     position: relative;
     top: 15vh;
@@ -66,16 +69,16 @@ iframe{
 
 .listItem{
     font-size: 2vw;
-    transition-duration: .2s;
+    transition-duration: .1s;
     padding: 2vw;
+    border-top: solid .1px #a3a3a3;
 }
 .listItem:hover{
-    border-left: .5vw solid black;
-    box-shadow: 10px 5px 50px 0px black; 
+    border-left: .3vw solid #4286f4;
 }
 .listItem:active{
-    border-left: .5vw solid black;
-    box-shadow: 10px 5px 50px 0px black; 
+    border-left: .3vw solid #4286f4;
+    box-shadow: 10px 5px 50px 0px #000000; 
 }
 
 @media screen and (max-width: 600px){
@@ -91,6 +94,7 @@ iframe{
 
     #suggestionDiv{
         margin-left: 5vw;
+        margin-bottom: 0vh;
         font-size: 3.5vw;
     }
     
@@ -99,12 +103,8 @@ iframe{
         transition-duration: .2s;
         padding: 2vw;
     }
-    .listItem:hover{
-        border-left: .5vw solid black;
-        box-shadow: 10px 5px 50px 0px black; 
-    }
     .listItem:active{
-        border-left: .5vw solid black;
-        box-shadow: 10px 5px 50px 0px black; 
+        border-left: .5vw solid #4286f4;
+        box-shadow: 10px 5px 50px 0px 000000; 
     }
 }
